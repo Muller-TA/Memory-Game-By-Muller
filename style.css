@@ -1,0 +1,107 @@
+/* ====================== Global Font ====================== */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ====================== Flip Mechanics ====================== */
+.game-block {
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.face {
+    backface-visibility: hidden;
+}
+
+.game-block.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* ====================== Match Pulse Animation ====================== */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 18px #2ecc71;
+    }
+
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 35px #2ecc71;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.has-match {
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* ====================== Blood Dot Animation ====================== */
+.blood-dot-holder {
+    position: fixed;
+    top: 73px;
+    left: 0;
+    width: 100%;
+    height: 0px;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.blood-dot-holder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+
+    background: rgb(189, 17, 17);
+    box-shadow:
+        0 0 6px rgba(179, 12, 12, 0.9),
+        0 0 14px rgba(146, 8, 8, 0.8),
+        0 0 22px rgba(179, 12, 12, 0.7),
+        0 0 30px rgba(179, 12, 12, 0.5);
+
+    animation: bloodPingPong 10s ease-in-out infinite;
+}
+
+@keyframes bloodPingPong {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(calc(100vw - 6px));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* ====================== Card Images ====================== */
+.memory-game-blocks .back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow:
+        0 0 8px rgba(189, 17, 17, 0.7),
+        0 0 20px rgba(150, 0, 0, 0.6),
+        0 0 35px rgba(100, 0, 0, 0.5),
+        inset 0 0 10px rgba(255, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.memory-game-blocks .back img:hover {
+    box-shadow:
+        0 0 12px rgba(200, 20, 20, 0.9),
+        0 0 25px rgba(160, 0, 0, 0.8),
+        0 0 45px rgba(120, 0, 0, 0.6),
+        inset 0 0 15px rgba(255, 20, 20, 0.4);
+    transform: scale(1.05);
+}

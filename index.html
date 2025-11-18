@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gradient-to-br from-[#a00000] via-[#630b0b] to-[#3b0a0a] text-[#ffe5e5] m-0 py-10 flex flex-col items-center justify-start min-h-screen">
+
+  <!-- Start Button -->
+  <div class="control-buttons fixed inset-0 bg-[rgba(70,15,15,0.7)] flex items-center justify-center z-50">
+    <span class="bg-gradient-to-br from-[#8b0e0e] to-[#530505] text-white px-11 py-4 rounded-full cursor-pointer text-[1.4rem] font-semibold shadow-[0_0_30px_rgba(255,60,60,0.8)] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_45px_rgba(255,90,90,0.8)]">
+      Start Game
+    </span>
+  </div>  
+
+  <!-- Info Container -->
+  <div class="info-container fixed top-0 left-0 w-full bg-[#550a0a] border-b border-[#771414] py-6 px-8 flex justify-between items-center z-50 overflow-hidden shadow-lg">
+  
+    <!-- Player Name -->
+    <div class="name text-white text-lg font-semibold">
+      Player Name : <span class=" name-place font-bold text-[#ffe5e5]">Unknown</span>
+    </div>
+  
+    <!-- Wrong Tries -->
+    <div class="tries text-white text-lg font-semibold">
+      Wrong Tries: <span class="text-[#ff2a2a] font-bold">0</span>
+    </div>
+  
+      <!-- Moving Light -->
+      <!-- Blood Dot Holder -->
+      <div class="blood-dot-holder"></div>
+      
+</div>
+
+  </div>
+<div class="memory-game-blocks w-[90%] max-w-[1200px] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 justify-center mt-32">
+
+  <!-- Pair 1 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="1">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (1).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 1 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="1">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (1).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 2 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="2">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (2).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 2 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="2">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (2).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 3 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="3">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (3).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 3 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="3">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (3).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 4 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="4">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (4).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 4 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="4">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (4).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 5 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="5">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (5).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 5 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="5">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (5).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 6 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="6">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (6).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 6 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="6">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (6).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 7 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="7">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (7).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 7 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="7">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (7).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 8 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="8">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (8).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 8 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="8">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (8).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 9 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="9">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (9).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 9 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="9">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (9).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 10 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="10">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (10).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 10 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="10">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (10).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 11 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="11">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (11).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 11 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="11">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (11).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 12 - Card 1 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="12">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (12).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+  <!-- Pair 12 - Card 2 -->
+  <div class="game-block relative w-full aspect-square [transform-style:preserve-3d] transition-transform duration-500 ease-in-out cursor-pointer" data-technology="12">
+    <div class="front absolute w-full h-full rounded-xl bg-gradient-to-br from-[#550a0a] to-[#550a0a] border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden]"></div>
+    <div class="back absolute w-full h-full rounded-xl border border-[rgba(60,10,10,0.5)] flex items-center justify-center shadow-[0_0_14px_rgb(60,10,10)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+      <img src="imgs/Memory game img (12).png" alt="" class="w-[95%] h-[95%] object-contain rounded-lg">
+    </div>
+  </div>
+
+
+  </div>
+
+  <audio id="success" src="audio/success.mp3" preload="auto"></audio>
+  <audio id="fail" src="audio/fail.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+
+</body>
+</html>
