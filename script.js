@@ -11,6 +11,7 @@ const triesElement = document.querySelector('.tries span');
 let tries = 0;
 let win = document.getElementById('success');
 let lose = document.getElementById('fail');
+
 // Start game when the button is clicked
 document.querySelector('.control-buttons span').addEventListener('click', startGame);
 
@@ -40,7 +41,6 @@ function startGame() {
 }
 
 // ========================= READ =========================
-// Shuffle array function
 function shuffle(array) {
   let current = array.length, temp, random;
   while (current > 0) {
@@ -54,21 +54,21 @@ function shuffle(array) {
 }
 
 // ========================= UPDATE =========================
-// Flip cards and check for match
 function flipBlock(selectedBlock) {
   // Prevent flipping matched cards
   if (selectedBlock.classList.contains('is-flipped') || selectedBlock.classList.contains('matched')) return;
 
+  // Prevent flipping if already 2 unmatched cards are open
+  const flippedBlocks = blocks.filter(b => b.classList.contains('is-flipped') && !b.classList.contains('matched'));
+  if (flippedBlocks.length >= 2) return;
+
   // Flip the selected card
   selectedBlock.classList.add('is-flipped');
 
-  // Get currently flipped but unmatched cards
-  const flippedBlocks = blocks.filter(b => b.classList.contains('is-flipped') && !b.classList.contains('matched'));
-
-  // If two cards flipped → check match
-  if (flippedBlocks.length === 2) {
+  const allFlippedBlocks = blocks.filter(b => b.classList.contains('is-flipped') && !b.classList.contains('matched'));
+  if (allFlippedBlocks.length === 2) {
     stopClicking();
-    checkMatchedBlocks(flippedBlocks[0], flippedBlocks[1]);
+    checkMatchedBlocks(allFlippedBlocks[0], allFlippedBlocks[1]);
   }
 }
 
@@ -83,8 +83,8 @@ function checkMatchedBlocks(firstBlock, secondBlock) {
   if (firstBlock.dataset.technology === secondBlock.dataset.technology) {
     // MATCH → keep them flipped and disable any further actions
     [firstBlock, secondBlock].forEach(b => {
-      b.classList.add('matched');
-      b.style.pointerEvents = 'none';
+      b.classList.add('matched'); // keep flipped
+      b.style.pointerEvents = 'none'; // disable clicking
     });
     win?.play();
     checkAllMatched();
@@ -110,21 +110,5 @@ function checkAllMatched() {
       alert(`Congratulations! You matched all the cards!\nWrong tries: ${tries}`);
       setTimeout(() => window.location.reload(), 500);
     }, duration);
-  }
-}
-
-function flipBlock(selectedBlock) {
-  if (selectedBlock.classList.contains('is-flipped') || selectedBlock.classList.contains('matched')) return;
-
-  const flippedBlocks = blocks.filter(b => b.classList.contains('is-flipped') && !b.classList.contains('matched'));
-  if (flippedBlocks.length >= 2) return;
-
-  selectedBlock.classList.add('is-flipped');
-
-  const allFlippedBlocks = blocks.filter(b => b.classList.contains('is-flipped') && !b.classList.contains('matched'));
-
-  if (allFlippedBlocks.length === 2) {
-    stopClicking();
-    checkMatchedBlocks(allFlippedBlocks[0], allFlippedBlocks[1]);
   }
 }
