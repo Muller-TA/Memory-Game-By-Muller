@@ -112,3 +112,19 @@ function checkAllMatched() {
     }, duration);
   }
 }
+
+function flipBlock(selectedBlock) {
+  if (selectedBlock.classList.contains('is-flipped') || selectedBlock.classList.contains('matched')) return;
+
+  const flippedBlocks = blocks.filter(b => b.classList.contains('is-flipped') && !b.classList.contains('matched'));
+  if (flippedBlocks.length >= 2) return;
+
+  selectedBlock.classList.add('is-flipped');
+
+  const allFlippedBlocks = blocks.filter(b => b.classList.contains('is-flipped') && !b.classList.contains('matched'));
+
+  if (allFlippedBlocks.length === 2) {
+    stopClicking();
+    checkMatchedBlocks(allFlippedBlocks[0], allFlippedBlocks[1]);
+  }
+}
